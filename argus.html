@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUS: Build Nepal Hackathon | Raunak Kushwaha</title>
+    <meta name="description" content="ARGUS is a trekking safety system built at the Build Nepal Hackathon: a Next.js and Supabase backend with portals for trekkers and monitoring authorities.">
+    <link rel="canonical" href="https://raunakkushwaha.tech/argus">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ARGUS: Build Nepal Hackathon | Raunak Kushwaha">
+    <meta property="og:description" content="ARGUS is a trekking safety system built at the Build Nepal Hackathon: a Next.js and Supabase backend with portals for trekkers and monitoring authorities.">
+    <meta property="og:url" content="https://raunakkushwaha.tech/argus">
+    <meta property="og:image" content="https://raunakkushwaha.tech/assets/argus/build-01.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ARGUS: Build Nepal Hackathon | Raunak Kushwaha">
+    <meta name="twitter:description" content="ARGUS is a trekking safety system built at the Build Nepal Hackathon: a Next.js and Supabase backend with portals for trekkers and monitoring authorities.">
+    <meta name="twitter:image" content="https://raunakkushwaha.tech/assets/argus/build-01.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--bg); color: var(--text); font-family: var(--font-body); margin: 0; }
+        .is-subpage #navbar { background: rgba(8, 8, 8, 0.95); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header { padding: 160px 0 80px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; font-weight: 800; }
+        .page-header p { color: var(--text-dim); max-width: 680px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6; }
+        .page-header .meta { display: flex; justify-content: center; gap: 24px; margin-top: 1.5rem; flex-wrap: wrap; }
+        .page-header .meta span { font-family: var(--font-mono); font-size: 0.85rem; color: var(--signal); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; }
+
+        .content { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; }
+        .block { padding: 70px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .block:last-child { border-bottom: none; }
+        .block h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--copper); margin-bottom: 2.5rem; font-weight: 600; text-align: center; }
+        .block > p.intro { color: var(--text-dim); max-width: 760px; margin: -1.5rem auto 2.5rem; text-align: center; line-height: 1.7; }
+
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { background: var(--surface); border: 1px solid var(--border-soft); border-radius: 16px; padding: 2.2rem; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .feature-card i { font-size: 2rem; color: var(--copper); margin-bottom: 1.2rem; display: block; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--text); }
+        .feature-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 900px; margin: 0 auto; }
+        .stack-tags span { font-family: var(--font-mono); font-size: 12.5px; color: var(--signal); border: 1px solid var(--signal-dim); padding: 6px 14px; border-radius: 999px; }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .gallery-item { position: relative; aspect-ratio: 4/3; background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-soft); transition: all 0.3s ease; }
+        .gallery-item:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: 0.3s; }
+        .gallery-item:hover img { opacity: 1; }
+        .gallery-item .caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: linear-gradient(transparent, rgba(0,0,0,0.9)); font-size: 0.85rem; color: var(--copper); font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .page-header { padding: 120px 1.5rem 60px; }
+            .block { padding: 50px 0; }
+        }
+    </style>
+</head>
+
+<body class="is-subpage">
+    <nav id="navbar" class="scrolled">
+        <div class="nav-content">
+            <a href="/" class="logo">RK<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header fade-up">
+        <h1>ARGUS <span style="color: var(--copper);">Trekking Safety System</span></h1>
+        <p>A wearable and portal system for trekker safety and emergency response, built with a team of four at the Build Nepal Hackathon.</p>
+        <div class="meta">
+            <span><i class="fas fa-trophy"></i> Build Nepal Hackathon</span>
+            <span><i class="fas fa-school"></i> Mid-Valley International College</span>
+            <span><i class="fas fa-calendar"></i> Aug 1–2, 2026</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="block fade-up">
+            <h2>What It Does</h2>
+            <p class="intro">ARGUS pairs a wrist-worn vitals monitor with a phone app and a web backend, so trekkers in areas with little to no signal can still get help if something goes wrong. A trekker's status and location sync when possible, and an authority-side portal lets rescue teams see who might be in trouble and respond faster.</p>
+            <div class="car-grid">
+                <div class="feature-card">
+                    <i class="fas fa-heart-pulse"></i>
+                    <h3>Wristband</h3>
+                    <p>ESP32 microcontroller with a MAX30102 sensor for heart rate and blood oxygen, paired to a phone over Bluetooth.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-location-dot"></i>
+                    <h3>Location & Alerts</h3>
+                    <p>Uses the phone's GPS for positioning and can push alerts out over WhatsApp when a trekker needs help.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>Trekker & Authority Portals</h3>
+                    <p>A Next.js and Supabase backend behind two portals: one for trekkers, one for the authorities monitoring them.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="block fade-up">
+            <h2>Stack</h2>
+            <div class="stack-tags">
+                <span>ESP32</span><span>MAX30102</span><span>Bluetooth</span><span>Next.js</span>
+                <span>Supabase</span><span>WhatsApp API</span><span>Rate Limiting</span><span>Phone GPS</span>
+            </div>
+        </div>
+
+        <div class="block fade-up">
+            <h2>At the Hackathon</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="assets/argus/team.jpg" alt="Team at Build Nepal Hackathon"><div class="caption">Team at Mid-Valley International College</div></div>
+                <div class="gallery-item"><img src="assets/argus/build-01.jpg" alt="Authority login backend and environment sensor readout"><div class="caption">Authority login backend & sensor readout</div></div>
+                <div class="gallery-item"><img src="assets/argus/build-02.jpg" alt="Team workspace during the build"><div class="caption">Late-night build session</div></div>
+                <div class="gallery-item"><img src="assets/argus/build-04.jpg" alt="Team workspace during the build"><div class="caption">Working through the stack</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Raunak Kushwaha. All rights reserved.</p>
+                <div class="legal-links"><a href="/privacy">Privacy</a><span>&middot;</span><a href="/terms">Terms</a></div>
+                <div class="socials">
+                    <a href="https://github.com/0xwrdo" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:raunakkushwaha077@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.fade-up').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

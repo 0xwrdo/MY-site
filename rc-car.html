@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Car: 21V Build | Raunak Kushwaha</title>
+    <meta name="description" content="A 21V RC car rebuilt from scratch on a BTS7960 motor driver and FlySky FS-i6 radio, with roughly 2km range and switchable power modes.">
+    <link rel="canonical" href="https://raunakkushwaha.tech/rc-car">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RC Car: 21V Build | Raunak Kushwaha">
+    <meta property="og:description" content="A 21V RC car rebuilt from scratch on a BTS7960 motor driver and FlySky FS-i6 radio, with roughly 2km range and switchable power modes.">
+    <meta property="og:url" content="https://raunakkushwaha.tech/rc-car">
+    <meta property="og:image" content="https://raunakkushwaha.tech/assets/rc-car-v2/06-final.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RC Car: 21V Build | Raunak Kushwaha">
+    <meta name="twitter:description" content="A 21V RC car rebuilt from scratch on a BTS7960 motor driver and FlySky FS-i6 radio, with roughly 2km range and switchable power modes.">
+    <meta name="twitter:image" content="https://raunakkushwaha.tech/assets/rc-car-v2/06-final.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--bg); color: var(--text); font-family: var(--font-body); margin: 0; }
+        .is-subpage #navbar { background: rgba(8, 8, 8, 0.95); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header { padding: 160px 0 80px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; font-weight: 800; }
+        .page-header p { color: var(--text-dim); max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6; }
+        .page-header .meta { display: flex; justify-content: center; gap: 24px; margin-top: 1.5rem; flex-wrap: wrap; }
+        .page-header .meta span { font-family: var(--font-mono); font-size: 0.85rem; color: var(--signal); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; }
+
+        .content { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; }
+        .block { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .block:last-child { border-bottom: none; }
+        .block h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--copper); margin-bottom: 3rem; font-weight: 600; text-align: center; }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: var(--surface); border: 1px solid var(--border-soft); border-radius: 16px;
+            padding: 2.5rem; text-align: center; transition: all 0.3s ease;
+        }
+        .feature-card:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .feature-card i { font-size: 2.5rem; color: var(--copper); margin-bottom: 1.5rem; display: block; }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text); }
+        .feature-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+
+        /* Specs table */
+        .specs-table { max-width: 760px; margin: 0 auto; border: 1px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
+        .specs-row { display: flex; padding: 16px 24px; border-bottom: 1px solid var(--border-soft); }
+        .specs-row:last-child { border-bottom: none; }
+        .specs-row:nth-child(odd) { background: var(--surface); }
+        .specs-label { flex: 0 0 180px; font-family: var(--font-mono); font-size: 13px; color: var(--copper); }
+        .specs-value { color: var(--text-dim); font-size: 14.5px; }
+
+        .gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; margin-top: 1rem;
+        }
+        .gallery-item {
+            position: relative; aspect-ratio: 4/3; background: var(--surface);
+            border-radius: 16px; overflow: hidden; border: 1px solid var(--border-soft);
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: 0.3s; }
+        .gallery-item:hover img { opacity: 1; }
+        .gallery-item .caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 1rem 1.2rem; background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            font-size: 0.85rem; color: var(--copper); font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .page-header { padding: 120px 1.5rem 60px; }
+            .block { padding: 50px 0; }
+            .specs-row { flex-direction: column; gap: 4px; }
+            .specs-label { flex: none; }
+        }
+    </style>
+</head>
+
+<body class="is-subpage">
+    <nav id="navbar" class="scrolled">
+        <div class="nav-content">
+            <a href="/" class="logo">RK<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header fade-up">
+        <h1>21V <span style="color: var(--copper);">RC Car</span></h1>
+        <p>Rebuilt from scratch on a BTS7960 driver and a FlySky FS-i6 radio, running off a 21V pack with roughly 2km of control range.</p>
+        <div class="meta">
+            <span><i class="fas fa-bolt"></i> 21V Pack</span>
+            <span><i class="fas fa-satellite-dish"></i> ~2km Range</span>
+            <span><i class="fas fa-gauge-high"></i> Full / Half Power Modes</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="block fade-up">
+            <h2>Technical Features</h2>
+            <div class="car-grid">
+                <div class="feature-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>BTS7960 Motor Driver</h3>
+                    <p>A 43A H-bridge driver running both rear motors in parallel, with R_EN/L_EN wired straight to 5V so it's always enabled.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-satellite-dish"></i>
+                    <h3>FlySky FS-i6 Radio</h3>
+                    <p>FS-i6 transmitter and FS-iA6 receiver for control, with a switch channel wired in for selectable power modes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-diagram-project"></i>
+                    <h3>Split Power Rails</h3>
+                    <p>21V goes straight to the motor driver; a separate regulated rail powers the Arduino, receiver, and steering servo so they don't brown out under motor load.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="block fade-up">
+            <h2>Build Notes</h2>
+            <div class="specs-table">
+                <div class="specs-row"><div class="specs-label">Controller</div><div class="specs-value">Arduino Uno: reads throttle (CH2) and the power-mode switch (CH5) via pulseIn()</div></div>
+                <div class="specs-row"><div class="specs-label">Steering</div><div class="specs-value">SG90 servo wired directly into the receiver's CH4: no Arduino in that signal path</div></div>
+                <div class="specs-row"><div class="specs-label">Drive</div><div class="specs-value">2 DC motors in parallel through a single BTS7960, PWM-driven from the Arduino</div></div>
+                <div class="specs-row"><div class="specs-label">Power</div><div class="specs-value">21V pack feeds the BTS7960 directly; a separate regulated rail feeds the Arduino, receiver, and servo</div></div>
+                <div class="specs-row"><div class="specs-label">Failsafe</div><div class="specs-value">Motors cut out on signal loss instead of holding a stale throttle value</div></div>
+                <div class="specs-row"><div class="specs-label">Ground</div><div class="specs-value">Battery, driver, Arduino, receiver, and servo all share a common ground</div></div>
+            </div>
+        </div>
+
+        <div class="block fade-up">
+            <h2>Build Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="assets/rc-car-v2/01-chassis.jpg" alt="RC car chassis"><div class="caption">Chassis & Motor Layout</div></div>
+                <div class="gallery-item"><img src="assets/rc-car-v2/02-electronics.jpg" alt="Electronics stack"><div class="caption">BTS7960, Receiver & Wiring</div></div>
+                <div class="gallery-item"><img src="assets/rc-car-v2/03-wiring.jpg" alt="Wiring detail"><div class="caption">Power & Signal Wiring</div></div>
+                <div class="gallery-item"><img src="assets/rc-car-v2/04-build.jpg" alt="Build in progress"><div class="caption">Build in Progress</div></div>
+                <div class="gallery-item"><img src="assets/rc-car-v2/05-detail.jpg" alt="Build detail"><div class="caption">Driver & Battery Mounting</div></div>
+                <div class="gallery-item"><img src="assets/rc-car-v2/06-final.jpg" alt="Finished RC car"><div class="caption">Finished Build</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Raunak Kushwaha. All rights reserved.</p>
+                <div class="legal-links"><a href="/privacy">Privacy</a><span>&middot;</span><a href="/terms">Terms</a></div>
+                <div class="socials">
+                    <a href="https://github.com/0xwrdo" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:raunakkushwaha077@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.fade-up').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

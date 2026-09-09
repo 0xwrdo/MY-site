@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9 Science Exhibition | Raunak Kushwaha</title>
+    <meta name="description" content="Hardware and electronics projects presented by Raunak Kushwaha at his school's Class 9 Science Exhibition.">
+    <link rel="canonical" href="https://raunakkushwaha.tech/class9-exhibition">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Class 9 Science Exhibition | Raunak Kushwaha">
+    <meta property="og:description" content="Hardware and electronics projects presented by Raunak Kushwaha at his school's Class 9 Science Exhibition.">
+    <meta property="og:url" content="https://raunakkushwaha.tech/class9-exhibition">
+    <meta property="og:image" content="https://raunakkushwaha.tech/assets/class9/01.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Class 9 Science Exhibition | Raunak Kushwaha">
+    <meta name="twitter:description" content="Hardware and electronics projects presented by Raunak Kushwaha at his school's Class 9 Science Exhibition.">
+    <meta name="twitter:image" content="https://raunakkushwaha.tech/assets/class9/01.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: var(--bg); color: var(--text); font-family: var(--font-body); margin: 0; }
+        .is-subpage #navbar { background: rgba(8, 8, 8, 0.95); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header { padding: 160px 0 80px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .page-header h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; font-weight: 800; }
+        .page-header p { color: var(--text-dim); max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6; }
+
+        .content { max-width: 1220px; margin: 0 auto; padding: 0 1.5rem; }
+        .block { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .block:last-child { border-bottom: none; }
+        .block h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--copper); margin-bottom: 3rem; font-weight: 600; text-align: center; }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: var(--surface); border: 1px solid var(--border-soft); border-radius: 16px;
+            padding: 2.5rem; text-align: center; transition: all 0.3s ease;
+        }
+        .feature-card:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .feature-card i { font-size: 2.5rem; color: var(--copper); margin-bottom: 1.5rem; display: block; }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text); }
+        .feature-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+
+        .gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; margin-top: 1rem;
+        }
+        .gallery-item {
+            position: relative; aspect-ratio: 4/3; background: var(--surface);
+            border-radius: 12px; overflow: hidden; border: 1px solid var(--border-soft);
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover { border-color: var(--copper); transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: 0.3s; loading: lazy; }
+        .gallery-item:hover img { opacity: 1; }
+
+        @media (max-width: 600px) {
+            .page-header { padding: 120px 1.5rem 60px; }
+            .block { padding: 50px 0; }
+        }
+    </style>
+</head>
+
+<body class="is-subpage">
+    <nav id="navbar" class="scrolled">
+        <div class="nav-content">
+            <a href="/" class="logo">RK<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header fade-up">
+        <h1>Class 9 <span style="color: var(--copper);">Science Exhibition</span></h1>
+        <p>A school science and technology exhibition in 2023 where I presented hardware and electronics projects to students, teachers, and visitors.</p>
+    </div>
+
+    <div class="content">
+
+        <div class="block fade-up">
+            <h2>Photos</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="assets/class9/01.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/02.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/03.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/04.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/05.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/06.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/07.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/08.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/09.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/10.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/11.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+                <div class="gallery-item"><img src="assets/class9/12.jpg" alt="Class 9 Science Exhibition 2023" loading="lazy"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Raunak Kushwaha. All rights reserved.</p>
+                <div class="legal-links"><a href="/privacy">Privacy</a><span>&middot;</span><a href="/terms">Terms</a></div>
+                <div class="socials">
+                    <a href="https://github.com/0xwrdo" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:raunakkushwaha077@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.fade-up').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
